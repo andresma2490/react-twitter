@@ -1,14 +1,25 @@
 import React from 'react';
-import { auth } from '../config/firebase.config';
+import { db, auth } from '../config/firebase.config';
 
 class Post extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { ...this.props.post, likeButton:false };
+        this.state = { ...this.props.post };        
     }
 
-    like = () =>{
-        this.setState({ likeButton: !this.state.likeButton });
+    likeButton = false;
+
+    like = async () =>{
+        this.likeButton = !this.likeButton;
+        
+        if (this.likeButton){
+            await this.setState({ likes: this.state.likes +1 })
+            await db.collection('posts').doc(this.state.id).update({ likes: this.state.likes });
+        }
+        else {
+            await this.setState({ likes: this.state.likes -1 });
+            await db.collection('posts').doc(this.state.id).set(this.state);
+        }
     }
 
     canEdit = () => {
@@ -20,7 +31,7 @@ class Post extends React.Component{
             <div className="card mb-2" style={{ width:"30rem", padding:"20px", margin:"0 auto" }}>
                 <div className="row">
                     <div className="col-2">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/reactapp-9470e.appspot.com/o/userIcon.png?alt=media&token=178de382-dfbe-4945-9884-067e27507bf1"
+                    <img src="https://firebasestorage.googleapis.com/v0/b/reactwitter.appspot.com/o/User.png?alt=media&token=a433e67a-7bea-4369-aace-4361c97ba13b"
                         style={{ maxWidth:"4rem" }} className="mb-2" alt="post_image"></img>
                     </div>
 
@@ -37,7 +48,7 @@ class Post extends React.Component{
                             </button>  
                             <button className="btn btn-secondary ml-1" onClick={ this.like } style={{ padding:"4px", width:"3rem"}}>
                                 <i className="material-icons">
-                                    { this.state.likeButton ? 'favorite' : 'favorite_border'}
+                                    { this.likeButton ? 'favorite' : 'favorite_border'}
                                 </i>
                                 { this.state.likes }
                             </button>  

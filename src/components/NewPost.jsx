@@ -104,26 +104,34 @@ class NewPost extends React.Component {
     render() { 
         return (
             <div className="card mb-2" style={{ width:"30rem", padding:"20px", margin:"0 auto" }}>
-                
-                <form onSubmit={ this.onSubmit }>
-                    
-                    <img src={ this.state.image } style={{ display: this.state.image ? '' : 'none', maxWidth:"18rem" }} className="mb-2" alt="post_image"></img>
-
-                    <div className="form-group">
-                        <label htmlFor="description">What's happening?</label>
-                        <textarea className="form-control" required name="description" rows="3" value={ this.state.description } onChange={ this.handleChange }/>
+                <div className="row">
+                    <div className="col-2">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/reactwitter.appspot.com/o/User.png?alt=media&token=a433e67a-7bea-4369-aace-4361c97ba13b"
+                            style={{ maxWidth:"4rem" }} className="mb-2" alt="post_image"/>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">
-                        Twittear
-                    </button>                  
-                    
-                    <label className="btn btn-secondary m-1" style={{ height:"45px", padding:"10px" }}>
-                        <i className="material-icons"> add_photo_alternate </i>
-                        <input type="file" onChange={ this.handleUpload } hidden/>
-                    </label>
+                    <div className="col-9">
+                        <h5 className="card-title">{ this.state.author }</h5>
+                        
+                        <form onSubmit={ this.onSubmit }>
+                            <div className="form-group">
+                                <label htmlFor="description">What's happening?</label>
+                                <textarea className="form-control" required name="description" rows="3" value={ this.state.description } onChange={ this.handleChange }/>
+                            </div>
 
-                </form>
+                            <img src={ this.state.image } style={{ display: this.state.image ? '' : 'none', maxWidth:"18rem" }} className="mb-2" alt="post_image"></img>
+
+                            <button type="submit" className="btn btn-primary">
+                                Twittear
+                            </button>                  
+                            
+                            <label className="btn btn-secondary m-1" style={{ height:"45px", padding:"10px" }}>
+                                <i className="material-icons"> add_photo_alternate </i>
+                                <input type="file" onChange={ this.handleUpload } hidden/>
+                            </label>
+                        </form>
+                    </div>
+                </div>
             </div>
         );
     }

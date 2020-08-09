@@ -10,11 +10,19 @@ class Navigation extends React.Component {
     render(){
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ padding:"10px", marginBottom:"1rem" }}>
-                <Link to="/" className="navbar-brand"> RTwitter </Link>
+                <Link to="/" className="navbar-brand">
+                    <img src="../logo192.png" alt="logo" style={{ width:"25px", margin:"5px" }}/>
+                    RTwitter 
+                </Link>
 
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" style={{ height:"10px", width:"20rem" }}/>
-                </form>
+                {
+                    this.props.authorized
+                        ?<form className="form-inline my-2 my-lg-0">
+                            <input className="form-control mr-sm-2" type="text" placeholder="Search" style={{ height:"10px", width:"20rem" }}/>
+                        </form>
+                        :''
+                }
+                
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
