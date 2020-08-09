@@ -25,7 +25,7 @@ class SignUp extends React.Component{
         auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then( user => {
                 db.collection('users').doc().set({
-                    photo: 'https://firebasestorage.googleapis.com/v0/b/reactapp-9470e.appspot.com/o/userIcon.png?alt=media&token=178de382-dfbe-4945-9884-067e27507bf1',
+                    photo: 'https://firebasestorage.googleapis.com/v0/b/reactwitter.appspot.com/o/User.png?alt=media&token=a433e67a-7bea-4369-aace-4361c97ba13b',
                     email: this.state.email,
                     username: this.state.username,
                     posts: []

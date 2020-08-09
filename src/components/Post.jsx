@@ -32,7 +32,7 @@ class Post extends React.Component{
                 <div className="row">
                     <div className="col-2">
                     <img src="https://firebasestorage.googleapis.com/v0/b/reactwitter.appspot.com/o/User.png?alt=media&token=a433e67a-7bea-4369-aace-4361c97ba13b"
-                        style={{ maxWidth:"4rem" }} className="mb-2" alt="post_image"></img>
+                        style={{ maxWidth:"4rem" }} className="mb-2" alt="post_image"/>
                     </div>
 
                     <div className="col-10">

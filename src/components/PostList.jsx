@@ -55,10 +55,7 @@ class PostList extends React.Component {
                     docs.push({ ...doc.data(), id:doc.id })
                     
                 })     
-                this.setState({ posts: this.state.posts.concat(docs) })
-                
-                console.log(this.state.posts.length);  
-                console.log(this.state);                          
+                this.setState({ posts: this.state.posts.concat(docs) })                 
             })
             .catch(
 

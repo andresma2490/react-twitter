@@ -7,6 +7,7 @@ class NewPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             author: '',
             email: auth.currentUser.email,
             description:'',
@@ -16,6 +17,10 @@ class NewPost extends React.Component {
             likes: 0,
             comments:[]
         };
+
+        if (this.props.id) {
+            this.setState({id: this.props.id})
+        }
 
         this.handleUpload = this.handleUpload.bind(this); // input file
         this.handleSubmit = this.handleSubmit.bind(this); // button
